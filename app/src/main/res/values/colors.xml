@@ -7,4 +7,20 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+
+    <!--    app color-->
+    <color name="primary_color">#2F80ED</color>
+    <color name="secondary_color">#2FD3ED</color>
+    <color name="tertiary_color">#F5F5F5</color>
+
+    <!--    text-->
+    <color name="primary_text">#333333</color>
+    <color name="secondary_text">#666666</color>
+    <color name="disabled_text">#999999</color>
+
+    <!--    background-->
+    <color name="primary_background">#FFFFFF</color>
+    <color name="secondary_background">#F5F5F5</color>
+    <color name="tertiary_background">#E8E8E8</color>
 </resources>

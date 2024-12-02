@@ -2,4 +2,12 @@
 <resources>
 
     <style name="Theme.WalkWell" parent="android:Theme.Material.Light.NoActionBar" />
+
+    <!-- Splash screen theme -->
+    <style name="App.Theme.Starting" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/primary_background</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/ic_splash</item> <!-- Splash icon -->
+        <item name="windowSplashScreenIconBackgroundColor">@color/primary_background</item>
+        <item name="postSplashScreenTheme">@style/Theme.WalkWell</item>
+    </style>
 </resources>

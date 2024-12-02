@@ -1,0 +1,27 @@
+<animated-vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt">
+    <aapt:attr name="android:drawable">
+        <vector
+            android:width="800dp"
+            android:height="800dp"
+            android:viewportWidth="48"
+            android:viewportHeight="48">
+            <path
+                android:fillColor="@color/primary_color"
+                android:pathData="M18.6,20.992a1.4,1.4 0,1 1,1.4 1.4,1.399 1.399,0 0,1 -1.4,-1.4zM23.277,30.928l-1.746,-2.432 -0.21,-3.89c-0.05,-0.927 -1.313,-1.044 -2.45,-1.137 -0.68,1.152 -1.785,3.294 -2.25,4.203a0.52,0.52 0,0 0,0.191 0.678,0.532 0.532,0 0,0 0.744,-0.19l1.515,-2.678 0.186,3.123 2.498,2.984 1.22,3.436a0.826,0.826 0,0 0,0.948 0.4,0.861 0.861,0 0,0 0.495,-1.003c-0.02,-0.082 -1.14,-3.494 -1.14,-3.494zM18.426,30.995l-2.207,3.086a0.783,0.783 0,1 0,1.301 0.864l2.324,-3.086 0.168,-0.794 -1.166,-1.392zM22.366,25.408l0.078,1.447 1.487,1.119a0.635,0.635 0,0 0,0.643 -1.058zM25,32h10v-1L25,31zM13,32h3v-1L13,31zM25,18a5,5 0,1 1,5 5,5.006 5.006,0 0,1 -5,-5zM26,18a4,4 0,1 0,4 -4,4.005 4.005,0 0,0 -4,4zM32,18h-2L30,15h-1v4h3z"
+                android:strokeWidth="1" />
+
+        </vector>
+    </aapt:attr>
+    <target android:name="path">
+        <aapt:attr name="android:animation">
+            <objectAnimator
+                android:duration="2000"
+                android:interpolator="@android:interpolator/fast_out_slow_in"
+                android:propertyName="fillColor"
+                android:valueFrom="#bb86fc"
+                android:valueTo="#ffffff"
+                android:valueType="colorType" />
+        </aapt:attr>
+    </target>
+</animated-vector>
