@@ -13,9 +13,3 @@ fun HomeScreen(navController: NavController) {
         Text("Go to Second Screen")
     }
 }
-
-@Composable
-fun SecondScreen() {
-    // Your second screen UI
-    Text("Welcome to the Second Screen!")
-}
