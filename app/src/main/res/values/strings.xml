@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Walk Well</string>
+    <string name="title_activity_track">TrackActivity</string>
 </resources>
