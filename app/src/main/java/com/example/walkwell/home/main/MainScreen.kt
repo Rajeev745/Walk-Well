@@ -26,7 +26,6 @@ import com.example.walkwell.home.bottom_nav.BottomNavCurve
 import com.example.walkwell.home.bottom_nav.BottomNavScreen
 import com.example.walkwell.home.history.HistoryScreen
 import com.example.walkwell.home.home_screen.HomeScreen
-import com.example.walkwell.home.home_screen.SecondScreen
 import com.example.walkwell.home.profile.ProfileScreen
 
 @Composable
@@ -95,7 +94,6 @@ fun MainScreen(modifier: Modifier) {
             composable(BottomNavScreen.Home.route) { HomeScreen(navController) }
             composable(BottomNavScreen.History.route) { HistoryScreen() }
             composable(BottomNavScreen.Profile.route) { ProfileScreen() }
-            composable("second_screen") { SecondScreen() }
         }
     }
 
