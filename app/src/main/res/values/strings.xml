@@ -1,4 +1,10 @@
 <resources>
     <string name="app_name">Walk Well</string>
     <string name="title_activity_track">TrackActivity</string>
+
+    <string name="allow_permission">Allow Permission</string>
+    <string name="ok">Ok</string>
+    <string name="settings">Settings</string>
+    <string name="permission_rationale">Please provide the permission to track your walks.</string>
+    <string name="google_maps_key">AIzaSyCSCrjcHpbbQdWVmaJ5kTr2u0sqGJNjL_U</string>
 </resources>
