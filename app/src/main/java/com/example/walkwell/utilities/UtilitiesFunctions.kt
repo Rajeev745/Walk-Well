@@ -1,5 +1,6 @@
 package com.example.walkwell.utilities
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.drawable.Drawable
@@ -65,5 +66,20 @@ object UtilitiesFunctions {
         bitmap = Bitmap.createScaledBitmap(bitmap, markerSizePx, markerSizePx, false)
 
         return bitmap
+    }
+
+    /**
+     * Formats the elapsed time into a readable string.
+     * Converts the elapsed milliseconds to a time format (HH:mm:ss).
+     *
+     * @param elapsedMillis The elapsed time in milliseconds.
+     * @return The formatted string representing the elapsed time.
+     */
+    @SuppressLint("DefaultLocale")
+    fun formatElapsedTime(elapsedMillis: Long): String {
+        val seconds = (elapsedMillis / 1000) % 60
+        val minutes = (elapsedMillis / 1000 / 60) % 60
+        val hours = (elapsedMillis / 1000 / 60 / 60)
+        return String.format("%02d:%02d:%02d", hours, minutes, seconds)
     }
 }

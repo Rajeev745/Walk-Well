@@ -6,6 +6,8 @@ import android.util.Log
 import androidx.core.content.ContextCompat
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.maps.model.LatLng
+import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.flow.asSharedFlow
 import javax.inject.Inject
 
 /**
@@ -19,6 +21,9 @@ class LocationManager @Inject constructor(
     private val context: Context,
     private val fusedLocationProviderClient: FusedLocationProviderClient,
 ) {
+
+    private val _locationFlow = MutableSharedFlow<LatLng>()
+    val locationFlow = _locationFlow.asSharedFlow()
 
     /**
      * Fetches the user's current location.
@@ -49,6 +54,31 @@ class LocationManager @Inject constructor(
         } else {
             Log.d(TAG, "Permission Not Granted")
             onFailure("Permission not granted")
+        }
+    }
+
+    /**
+     * Method for starting fetching the user's location.
+     */
+    fun startFetchingLocation() {
+        if (ContextCompat.checkSelfPermission(
+                context,
+                android.Manifest.permission.ACCESS_FINE_LOCATION
+            ) == PackageManager.PERMISSION_GRANTED
+        ) {
+            try {
+                fusedLocationProviderClient.lastLocation.addOnSuccessListener { location ->
+                    location?.let {
+                        Log.d(TAG, "startFetchingLocation: $location")
+                        val latLng = LatLng(location.latitude, location.longitude)
+                        _locationFlow.tryEmit(latLng)
+                    }
+                }
+            } catch (e: SecurityException) {
+                Log.i(TAG, "startFetchingLocation: ${e.localizedMessage}")
+            }
+        } else {
+            Log.d(TAG, "startFetchingLocation: Permission not granted")
         }
     }
 

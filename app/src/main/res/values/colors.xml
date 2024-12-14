@@ -23,4 +23,9 @@
     <color name="primary_background">#FFFFFF</color>
     <color name="secondary_background">#F5F5F5</color>
     <color name="tertiary_background">#E8E8E8</color>
+
+    <!--    tracking colors-->
+    <color name="green">#00FF00</color>
+    <color name="red">#FF0000</color>
+    <color name="yellow">#FDFF00</color>
 </resources>
