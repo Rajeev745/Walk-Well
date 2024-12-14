@@ -113,6 +113,10 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.4.0")
     implementation("androidx.lifecycle:lifecycle-service:2.4.0")
 
-    //Coid
+    //Coil
     implementation("io.coil-kt:coil-svg:2.4.0")
+
+    // compose live data
+    implementation("androidx.compose.runtime:runtime-livedata:1.7.6")
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.6.1")
 }
