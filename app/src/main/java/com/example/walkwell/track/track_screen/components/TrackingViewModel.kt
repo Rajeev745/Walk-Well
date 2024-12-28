@@ -6,9 +6,12 @@ import androidx.annotation.RequiresApi
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.walkwell.utilities.LocationManager
 import com.google.android.gms.maps.model.LatLng
+import com.google.maps.android.SphericalUtil
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
@@ -27,9 +30,18 @@ class TrackingViewModel @Inject constructor(
     private val _userLocation = mutableStateOf<LatLng?>(null)
     val userLocation: State<LatLng?> = _userLocation
 
+    private val _pathPoints = MutableLiveData<List<List<Double>>>(emptyList())
+    val pathPoints: LiveData<List<List<Double>>> get() = _pathPoints
+
     // For checking whether all the permissions are granted
     private val _allPermissionsGranted = mutableStateOf(false)
     val allPermissionsGranted: State<Boolean> = _allPermissionsGranted
+
+    private val _totalDistance = MutableLiveData<Double>()
+    val totalDistance: LiveData<Double> = _totalDistance
+
+    private var previousLocation = LatLng(0.0, 0.0)
+    private var isFirstTimeDistance = true
 
     /**
      * Method for updating the status whether all the permissions are granted or not.
@@ -74,6 +86,29 @@ class TrackingViewModel @Inject constructor(
         if (!isGranted && !visiblePermissionDialogQueue.contains(permission)) {
             visiblePermissionDialogQueue.add(permission)
         }
+    }
+
+    fun updatePathPoints(newPoint: List<Double>) {
+        val latlng = LatLng(newPoint[0], newPoint[1])
+        val updatedPathPoints = _pathPoints.value.orEmpty().toMutableList()
+        updatedPathPoints.add(newPoint)
+
+        if (isFirstTimeDistance) {
+            val distance = SphericalUtil.computeDistanceBetween(latlng, latlng)
+            _totalDistance.value = (_totalDistance.value ?: 0.0) + distance
+            isFirstTimeDistance = false
+        } else {
+            previousLocation.let {
+                val distance = SphericalUtil.computeDistanceBetween(it, latlng)
+                _totalDistance.value = (_totalDistance.value ?: 0.0) + distance
+            }
+        }
+
+        // Update previous location
+        previousLocation = latlng
+
+        // Update the path points
+        _pathPoints.value = updatedPathPoints
     }
 
     companion object {

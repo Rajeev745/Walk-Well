@@ -8,7 +8,6 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
@@ -82,6 +81,7 @@ fun MapScreen(trackingViewmodel: TrackingViewModel) {
             }
 
             latestLocation?.let { location ->
+                trackingViewmodel.updatePathPoints(listOf(location.latitude, location.longitude))
                 markerState.position = location
                 cameraPositionState.animate(CameraUpdateFactory.newLatLngZoom(location, 17f), 1000)
             }
