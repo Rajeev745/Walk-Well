@@ -22,5 +22,8 @@ class ComponentTags {
 
         // Location request interval
         const val LOCATION_INTERVAL_REQUEST = 1000L
+
+        // Database
+        const val TRACKING_DATABASE = "tracking_database"
     }
 }
